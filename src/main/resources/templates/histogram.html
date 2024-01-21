@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{common :: meta_header('ヒストグラム設定',~{::link},~{::script})}">
+	  <script src="/script/script.js"></script>
+  </head>
+  <body>
+	<div th:replace="~{common :: header}"></div>
+	
+	<div id="histogram-form" div class="form">
+		<h2 class="keeper">ヒストグラム設定</h2>
+		<form method="post" th:action="@{/histogram}">
+			<table class="multi_form_table" id="resultTable">
+				<thead>
+					<th>No</th>
+					<th>レート差</th>
+					<th>説明</th>
+					<th>勝率</th>
+					<th>敗率</th>
+					<th>引分率</th>
+				</thead>
+			    <tbody>
+		            <tr th:each="histogramInfo, stat : *{histogramInfoList}">
+		                <td><input type="number" th:name="'recordNumber' + ${stat.index}" th:value="${histogramInfo.recordNumber}" readonly /></td>
+		                <td><input type="number" th:name="'rateWidth' + ${stat.index}" th:value="${histogramInfo.rateWidth}" /></td>
+		                <td><input type="text" th:name="'description' + ${stat.index}" th:value="${histogramInfo.description}" /></td>
+		                <td><input type="number" step="0.1" th:name="'winPercent' + ${stat.index}" th:value="${histogramInfo.winPercent}" /></td>
+		                <td><input type="number" step="0.1" th:name="'losePercent' + ${stat.index}" th:value="${histogramInfo.losePercent}" /></td>
+		                <td><input type="number" step="0.1" th:name="'drawPercent' + ${stat.index}" th:value="${histogramInfo.drawPercent}" /></td>
+		            </tr>
+			    </tbody>
+			</table>
+			<button type="submit" class="form_button">ヒストグラム設定</button>
+		</form>
+	</div>
+	
+	<div id="dialogEvent" th:attr="dialogText=${dialogText}" />
+  </body>
+</html>

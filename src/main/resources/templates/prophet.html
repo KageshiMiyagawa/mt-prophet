@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{common :: meta_header('結果予想',~{::link},~{::script})}">
+	  <script src="/script/script.js"></script>
+  </head>
+  <body>
+	<div th:replace="~{common :: header}"></div>
+
+	<div id="prophet-form" div class="form">
+		<h2 class="keeper">結果予想</h2>
+		<form method="post" th:action="@{/prophet}">
+			<table>
+				<tr>
+					<th><label>くじ種類</label></th>
+					<td><div class="cp_iptxt"><select name="type" id="typeSelect">
+						<option value="typeA">TypeA</option>
+						<option value="typeB">TypeB</option>
+						<option value="all">両方</option>
+					</select></div></td>
+				</tr>
+			</table>
+			<button type="submit" class="form_button">次節の結果予想</button>
+		</form>
+	</div>
+	
+	<table class="base_table" id="resultTable" th:if="${not #lists.isEmpty(matchingResultList)}">
+		<caption>【次節の結果予想】</caption>
+		<thead>
+			<th>予想No</th>
+			<th>くじ種類</th>
+			<th>発生確率</th>
+			<th>ホーム</th>
+			<th>アウェイ</th>
+			<th>予想内容</th>
+			<th>ホーム勝率</th>
+			<th>アウェイ勝率</th>
+			<th>引き分け率</th>
+			<th>ホームレート</th>
+			<th>アウェイレート</th>
+		</thead>
+	    <tbody>
+	        <th:block th:each="matchingResult : ${matchingResultList}">
+	            <th:block th:each="gameInfo, gameInfoStat: ${matchingResult.matchingGameInfo}">
+	                <tr>
+	                    <td th:if="${gameInfoStat.first}" th:rowspan="${matchingResult.matchingGameInfo.size()}" th:text="${matchingResult.prophetNo}"></td>
+	                    <td th:if="${gameInfoStat.first}" th:rowspan="${matchingResult.matchingGameInfo.size()}" th:text="${matchingResult.type}" th:style="${matchingResult.typeStyle}"></td>
+	                    <td th:if="${gameInfoStat.first}" th:rowspan="${matchingResult.matchingGameInfo.size()}" th:text="${matchingResult.probability}" th:style="${matchingResult.probabilityStyle}"></td>
+	                    <td th:text="${gameInfo.home}"></td>
+	                    <td th:text="${gameInfo.away}"></td>
+	                    <td th:text="${gameInfo.prophetInfo}" th:style="${gameInfo.prophetInfoStyle}"></td>
+	                    <td th:text="${gameInfo.winPercent}"></td>
+	                    <td th:text="${gameInfo.losePercent}"></td>
+	                    <td th:text="${gameInfo.drawPercent}"></td>
+	                    <td th:text="${gameInfo.homeRate}"></td>
+	                    <td th:text="${gameInfo.awayRate}"></td>
+	                </tr>
+	            </th:block>
+	        </th:block>
+	    </tbody>
+	</table>
+	
+	<div id="dialogEvent" th:attr="dialogText=${dialogText}" />
+  </body>
+</html>

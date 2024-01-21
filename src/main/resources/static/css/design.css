@@ -1,0 +1,463 @@
+@media screen and (min-width: 1024px) {
+
+/* common classes */
+.center{ 
+  text-align: center;
+  margin: 0;
+}
+
+.form{ 
+  text-align: center;
+  width: 50%;
+  margin: 12px auto; 
+  border: inset;
+  position: relative;
+}
+
+.link {
+  cursor: pointer;
+  pointer-events: auto;	
+}
+
+.link:hover {
+  background-color:cornflowerblue;
+}
+
+.error_text {
+  color:red;
+}
+
+.warn_text {
+  color:yellowgreen;
+}
+
+.info_text {
+  color:royalblue;
+}
+
+/* table */
+.base_table .multi_form_table{
+  width: 100%;
+  border-collapse:separate;
+  border-spacing: 0;
+  table-layout:fixed;
+}
+
+.base_table th:first-child{
+  border-radius: 5px 0 0 0;
+}
+
+.base_table th:last-child{
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #3c6690;
+}
+
+.base_table th{
+  text-align: center;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  width: 10%;
+  padding: 10px 0;
+}
+
+.base_table td{
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top:none;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+.base_table td:last-child{
+  border-right: 1px solid #a8b7c5;
+}
+
+.base_table tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
+}
+
+.base_table tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+.multi_form_table th:first-child{
+  border-radius: 5px 0 0 0;
+}
+
+.multi_form_table th:last-child{
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #3c6690;
+}
+
+.multi_form_table th{
+  text-align: center;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  width: 10%;
+  padding: 10px 0;
+}
+
+.multi_form_table input {
+	text-align: center;
+	width: 70%;
+}
+
+button {
+  display: inline-block;
+  background-color: #61b0e2;
+  border-radius: 60px;
+  box-shadow: 0 5px 0 #369ada;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form_button {
+  margin: 12px;
+  padding: 0.8em 3em;
+}
+
+.table_button {
+  margin: 12px;
+  padding: 0.4em 1em;
+}
+
+.dialog_button {
+  margin: 12px;
+  padding: 0.6em 2em;
+}
+
+.menu_button {
+  margin: 12px;
+  border-radius: 0px;
+  width: 50%;
+  font-size: 20px;
+  padding: 0.6em 2em;
+}
+
+button:hover {
+/* button */
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+button:active {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+/* input table */
+form table{
+    border-spacing: 0;
+    width: 80%;
+    margin: auto;
+}
+form td{
+    border-bottom: 1px solid #EEE;
+    text-align: center;
+}
+form th{
+    padding: 15px;
+    border-bottom: 1px solid #EEE;
+    text-align: center;
+    font-weight: normal;
+    vertical-align: top;
+    width: 40%;
+}
+.required,.optional{
+    padding-right: 4em;
+    position: relative;
+}
+.required::after,.optional::after{
+    content: "必須";
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    border: 1px solid #CCC;
+    padding: 0 5px;
+    font-size: 85%;
+    background: #d40000;
+    color: #FFF;
+}
+.optional::after{
+    content: "任意";
+    background: #d2e5ff;
+    color: #333;
+}
+
+/* input form */
+.cp_iptxt {
+	position: relative;
+	width: 60%;
+	margin: 4px auto;
+}
+.cp_iptxt input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #333333;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef input[type='text']:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+.cp_iptxt input[type='number'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #333333;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef input[type='number']:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+.cp_iptxt input[type='date'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #333333;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef input[type='date']:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+.cp_iptxt input[type='datetime-local'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #333333;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef input[type='datetime-local']:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+.cp_iptxt input[type='password'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #333333;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef input[type='password']:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+.cp_iptxt select {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #333333;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef select {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+
+/* menu */
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 45px;
+    width: 45px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background: linear-gradient(#1b2538 0%, #4466CE 80%);
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+}
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
+}
+
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+#menu-btn-check {
+    display: none;
+}
+
+.menu-content {
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 100%;/*rightの値を変更してメニューを画面外へ*/
+    z-index: 80;
+    background: linear-gradient(#1b2538 0%, #4466CE 80%);
+    transition: all 0.5s;/*アニメーション設定*/
+}
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+.menu-content ul li {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+}
+.menu-content ul li a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color:#ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    position: relative;
+}
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
+}
+#menu-btn-check:checked ~ .menu-content {
+    right: 0;/*メニューを画面内へ*/
+}
+
+.dialog {
+  width: 250px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 4px #888;
+  background: linear-gradient(#1b2538 0%, #4466CE 80%);
+  color: #FFFFFF;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.close-button{
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 4px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #ccc;
+	cursor: pointer;
+}
+
+.close-button:hover {
+	color: #000;
+}
+
+#resultTable th {
+  position: sticky;
+  top: 0;
+}
+
+.formMenu {
+  text-align: center;
+  margin-top: 10px;	
+}
+
+.keeper{
+  background: linear-gradient(#1b2538 0%, #4466CE 80%);
+  color: #FFFFFF;
+}
+
+.keeper2{
+  background: linear-gradient(transparent 0%, #f9d77a 80%);
+  color: #333333;
+}
+
+.wars{
+  background: linear-gradient(black 0%, darkred 80%);
+  color: floralwhite;
+}
+
+.club24{
+  background: linear-gradient(#00000024 0%, lightgoldenrodyellow 80%);
+  color: royalblue;
+}
+
+.quest{
+  background: linear-gradient(#00000012 0%, #4689FF 140%);
+  color: #222222;
+}
+
+#listMenu{
+  display: flex;
+  justify-content: center;
+}
+
+} /* レスポンシブデザインの閉じタグ */

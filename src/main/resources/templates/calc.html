@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{common :: meta_header('レーティング計算',~{::link},~{::script})}">
+	  <script src="/script/script.js"></script>
+  </head>
+  <body>
+	<div th:replace="~{common :: header}"></div>
+	<h3 class="center"><span class="info_text" th:text="${infoMessage}"></span></h3>
+	
+	<div id="calc-form" div class="form">
+		<h2 class="keeper">レーティング計算</h2>
+		<form method="post" th:action="@{/calc}">
+			<table>
+				<tr>
+					<th><label>計算開始対象</label></th>
+					<td><div class="cp_iptxt">
+						<input type="number" name="year" th:value="${year}" />
+					</div></td>
+				</tr>
+				<tr>
+					<th><label>繰り返し回数</label></th>
+					<td><div class="cp_iptxt">
+						<input type="number" name="count" th:value="${count}" />
+					</div></td>
+				</tr>
+				<tr>
+					<th><label>計算オプション</label></th>
+					<td><div class="cp_iptxt"><select name="option" id="optionSelect">
+						<option value="normal">通常計算</option>
+						<option value="force">未登録チーム強制計算</option>
+					</select></div></td>
+				</tr>
+			</table>
+			<button type="submit" class="form_button">レーティング計算</button>
+		</form>
+	</div>
+	
+	<div id="reset-form" div class="form">
+		<h2 class="keeper">レーティング初期化</h2>
+		<form method="post" th:action="@{/reset-calc}">
+			<button type="submit" class="form_button">レーティング初期化</button>
+		</form>
+	</div>
+	
+	<table class="base_table" th:if="${not #lists.isEmpty(clubTeamInfoList)}">
+		<caption>【チーム情報（レーティング計算後）】</caption>
+		<thead>
+			<th>チーム名</th>
+			<th>チーム略称</th>
+			<th>所属リーグ</th>
+			<th>ホームレート</th>
+			<th>アウェイレート</th>
+			<th>チーム詳細</th>
+		</thead>
+		<tr th:each="clubTeamInfo : ${clubTeamInfoList}" th:object="${clubTeamInfo}">
+			<td th:text="*{teamName}"/>
+			<td th:text="*{teamShortName}"/>
+			<td th:text="*{league}"/>
+			<td th:text="*{homeRate}"/>
+			<td th:text="*{awayRate}"/>
+			<td th:text="*{teamLink}"/>
+		</tr>
+	</table>
+	
+	<table class="base_table" id="resultTable" th:if="${not #lists.isEmpty(gameResultList)}">
+		<caption>【試合結果（レーティング計算後）】</caption>
+		<thead>
+			<th>年度</th>
+			<th>大会</th>
+			<th>節</th>
+			<th>試合日</th>
+			<th>K/O時刻</th>
+			<th>ホーム</th>
+			<th>スコア</th>
+			<th>アウェイ</th>
+			<th>ホームレート</th>
+			<th>アウェイレート</th>
+			<th>スタジアム</th>
+		</thead>
+		<tr th:each="gameResult : ${gameResultList}" th:object="${gameResult}">
+			<td th:text="*{year}"/>
+			<td th:text="*{tournament}"/>
+			<td th:text="*{section}"/>
+			<td th:text="*{gameDate}"/>
+			<td th:text="*{gameTime}"/>
+			<td th:text="*{home}"/>
+			<td th:text="*{score}"/>
+			<td th:text="*{away}"/>
+			<td th:text="*{homeRate}"/>
+			<td th:text="*{awayRate}"/>
+			<td th:text="*{stadium}"/>
+		</tr>
+	</table>
+
+	<table class="base_table" th:if="${not #lists.isEmpty(unknownTeamNameList)}">
+		<caption>【未登録チーム情報】</caption>
+		<thead>
+			<th>未登録チーム名</th>
+		</thead>
+		<tr th:each="teamName : ${unknownTeamNameList}">
+			<td th:text="${teamName}"/>
+		</tr>
+	</table>
+	
+	<div id="dialogEvent" th:attr="dialogText=${dialogText}" />
+  </body>
+</html>

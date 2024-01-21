@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<configuration>
+
+    <!--開発環境用設定 -->
+    <springProfile name="dev">
+        <property name="logFilePath" value="/var/log/mtprophet/dev" />
+        <property name="logLevel" value="DEBUG" />
+        <property name="logFileName" value="mtprophet" />
+    </springProfile>
+
+    <!--本番環境用設定 -->
+    <springProfile name="prod">
+        <property name="logFilePath" value="/var/log/mtprophet/prod" />
+        <property name="logLevel" value="INFO" />
+        <property name="logFileName" value="mtprophet" />
+    </springProfile>
+
+    <!-- コンソール出力 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- アプリケーションログのファイル書き出し -->
+    <appender name="APPLIATION_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--ファイル名設定 -->
+        <file>${logFilePath}${logFileName}.log</file>
+        <!--ログファイルのローテーション設定 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logFilePath}${logFileName}-%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <!--ログ出力フォーマット設定 -->
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ロガー -->
+    <logger name="appLogger" level="INFO">
+      <appender-ref ref="APPLIATION_LOG" />
+    </logger>
+
+    <!-- ルート -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

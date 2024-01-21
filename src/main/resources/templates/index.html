@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common :: meta_header('トップ',~{::link},~{::script})}">
+</head>
+
+<body>
+	<div th:replace="~{common :: header}"></div>
+	<div id="register_form" class="form">
+		<h2 class="keeper">メインメニュー</h2>
+		<form method="get" th:action="@{/scraping}">
+			<button type="submit" class="menu_button">データ収集</button>	
+		</form>
+		<form method="get" th:action="@{/calc}">
+			<button type="submit" class="menu_button">レート計算</button>	
+		</form>
+		<form method="get" th:action="@{/prophet}">
+			<button type="submit" class="menu_button">結果予測</button>	
+		</form>
+		<form method="get" th:action="@{/histogram}">
+			<button type="submit" class="menu_button">ヒストグラム設定</button>	
+		</form>
+	</div>
+</body>
+</html>

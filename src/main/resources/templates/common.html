@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="meta_header(title,links,scripts)">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/design-mobile.css">
+    <link rel="stylesheet" href="/css/design-tablet.css">
+    <link rel="stylesheet" href="/css/design.css">
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+
+    <title th:text="${title}+' | MiniToTo 結果予測ツール'">各ページタイトル | MT-Prophet</title>
+
+    <th:block th:replace="${links} ?: _" />
+    <th:block th:replace="${scripts} ?: _" />
+</head>
+<body>
+    <header th:fragment="header" class="keeper">
+        <h1 class="center"><a th:href="@{'/'}" style="text-decoration:none; color:#FFFFFF">Mini Toto Prophet</a></h1>
+	    <div class="hamburger-menu">
+	        <input type="checkbox" id="menu-btn-check">
+	        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+	        <div class="menu-content">
+	            <ul>
+	                <li>
+		                <a th:href="@{/}">メインメニュー</a>
+	                </li>
+	                <li>
+		                <a th:href="@{/scraping}">データ収集</a>
+	                </li>
+	                <li>
+		                <a th:href="@{/calc}">レート計算</a>
+	                </li>
+	                <li>
+		                <a th:href="@{/prophet}">結果予測</a>
+	                </li>
+	                <li>
+		                <a th:href="@{/histogram}">ヒストグラム設定</a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+    </header>
+</body>
+</html>
